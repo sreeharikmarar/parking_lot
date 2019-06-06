@@ -7,5 +7,18 @@ module ParkingLot
       @number = number
       @occupied = false
     end
+
+    def is_free?
+      @occupied == false
+    end
+
+    def occupied!
+      @occupied = true
+    end
+
+    def assign(vehicle)
+      @vehicle = vehicle
+      @number
+    end
   end
 end

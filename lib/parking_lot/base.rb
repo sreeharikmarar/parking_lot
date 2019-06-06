@@ -1,11 +1,12 @@
 module ParkingLot
   class Base
-  	NUMBER_OF_FLOORS=1
-    attr_reader :floors, :slots
+    NUMBER_OF_FLOORS=1
+    attr_reader :floors, :slots, :tickets
 
     def initialize(floors=NUMBER_OF_FLOORS)
       @floors = floors
       @slots = Array.new
+      @tickets = Hash.new
     end
 
     def create_slots(capacity)
@@ -17,6 +18,30 @@ module ParkingLot
       end
 
       capacity
+    end
+
+    def park(vehicle)
+      ticket = issue_ticket
+      ticket.slot.assign(vehicle)
+    end
+
+    private
+
+    def next_available_slot
+      raise Error::ParkingLotFull.new("Slots are not created") if @slots.empty?
+
+      @slots.find(&:is_free?)
+    end
+
+    def issue_ticket
+      slot = next_available_slot
+      raise Error::ParkingLotFull.new("Sorry, parking lot is full") unless slot
+
+      slot.occupied!
+
+      ticket = Ticket.new(slot)
+      @tickets[slot.number] = ticket
+      ticket
     end
   end
 end
