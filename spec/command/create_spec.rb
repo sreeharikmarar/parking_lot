@@ -11,7 +11,7 @@ RSpec.describe Command::Create do
   context "#execute" do
     it "should execute create command" do
       response = command.execute(parking_lot, "6")
-      expect(response).to eq("Created a parking lot with 6 slots")
+      expect(response).to eq(6)
     end
   end
 

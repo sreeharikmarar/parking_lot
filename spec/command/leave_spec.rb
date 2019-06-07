@@ -16,7 +16,7 @@ RSpec.describe Command::Leave do
   context "#execute" do
     it "should execute leave command" do
       response = command.execute(parking_lot, "1")
-      expect(response).to eq("Slot number 1 is free")
+       expect(response).to eq(1)
     end
   end
 

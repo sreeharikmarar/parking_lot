@@ -7,7 +7,6 @@ module Command
     def execute(parking_lot, *args)
       slot_number = parse(args)
       parking_lot.leave(slot_number)
-      "Slot number #{slot_number} is free"
     end
 
     def parse(args)
@@ -15,6 +14,10 @@ module Command
       raise Error::InvalidArgument.new("Multiple number of arguments, expected one") unless args.length == 1
 
       Integer(args.first) rescue raise Error::InvalidArgument.new("Slot number should be integer")
+    end
+
+    def log(number)
+      puts "Slot number #{number} is free"
     end
   end
 end

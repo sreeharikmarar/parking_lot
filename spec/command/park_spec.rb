@@ -12,7 +12,7 @@ RSpec.describe Command::Park do
     it "should execute park command" do
       parking_lot.create_slots(3)
       response = command.execute(parking_lot, "KA-01-HH-1234", "White")
-      expect(response).to eq("Allocated slot number: 1")
+      expect(response).to eq(1)
     end
   end
 

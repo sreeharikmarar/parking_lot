@@ -12,7 +12,8 @@ module Command
       command = commands[cmd]
       raise Error::InvalidCommand.new("Command Not Found!") unless command
 
-      puts command.execute(parking_lot, *args)
+      response = command.execute(parking_lot, *args)
+      command.log(response)
     end
 
     def register(command)

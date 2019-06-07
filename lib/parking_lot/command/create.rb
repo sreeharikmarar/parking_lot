@@ -7,7 +7,6 @@ module Command
     def execute(parking_lot, *args)
       capacity = parse(args)
       parking_lot.create_slots(capacity)
-      "Created a parking lot with #{capacity} slots"
     end
 
     def parse(args)
@@ -15,6 +14,10 @@ module Command
       raise Error::InvalidArgument.new("Multiple number of arguments") unless args.length == 1
 
       Integer(args.first) rescue raise Error::InvalidArgument.new("Capacity should be an Integer")
+    end
+
+    def log(capacity)
+      puts "Created a parking lot with #{capacity} slots"
     end
   end
 end

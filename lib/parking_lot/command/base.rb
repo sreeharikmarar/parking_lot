@@ -13,5 +13,9 @@ module Command
     def parse(arg)
       raise NotImplementedError
     end
+
+    def log(resonse)
+      raise NotImplementedError
+    end
   end
 end

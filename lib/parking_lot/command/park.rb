@@ -6,8 +6,7 @@ module Command
 
     def execute(parking_lot, *args)
       reg_number, color = parse(args)
-      slot_number = parking_lot.park(Vehicle::Car.new(reg_number,color))
-      "Allocated slot number: #{slot_number}"
+      parking_lot.park(Vehicle::Car.new(reg_number,color))
     end
 
     def parse(args)
@@ -16,6 +15,10 @@ module Command
       raise Error::InvalidArgument.new("Color should not be blank") unless color
 
       [reg_number, color]
+    end
+
+    def log(slot)
+      puts "Allocated slot number: #{slot}"
     end
   end
 end
