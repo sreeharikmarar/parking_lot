@@ -3,6 +3,7 @@ require_relative 'parking_lot/parking_lot_main'
 require_relative 'parking_lot/slot'
 require_relative 'parking_lot/ticket'
 require_relative 'parking_lot/vehicle'
+require_relative 'parking_lot/command'
 
 module ParkingLot
 end
