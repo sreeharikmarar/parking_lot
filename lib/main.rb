@@ -5,5 +5,9 @@ manager = Command::Manager.new
 reader = Input::Reader.new(ARGV[0])
 
 while(reader.read)
-  manager.process(parking_lot, reader.instruction)
+  begin
+    manager.process(parking_lot, reader.instruction)
+  rescue Error::ParkingLotError => e
+    puts e.message
+  end
 end

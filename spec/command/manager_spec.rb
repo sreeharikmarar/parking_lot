@@ -40,4 +40,15 @@ RSpec.describe Command::Manager do
       end.to output("Slot number 1 is free\n").to_stdout
     end
   end
+
+  context "#process status command" do
+    it "should process status command" do
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-3457","Red"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-5678","Red"))
+      expect do
+        manager.process(parking_lot, "status")
+      end.to output("Slot No.    Registration No    Colour\n1           KA-01-HH-1234      white\n2           KA-01-HH-3457      Red\n3           KA-01-HH-5678      Red\n").to_stdout
+    end
+  end
 end

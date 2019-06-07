@@ -1,6 +1,6 @@
 module ParkingLot
   class Slot
-    attr_reader :floor, :number, :occupied
+    attr_reader :floor, :number, :occupied, :vehicle
 
     def initialize(floor, number)
       @floor = floor
@@ -14,6 +14,10 @@ module ParkingLot
 
     def occupied!
       @occupied = true
+    end
+
+    def occupied?
+      !is_free?
     end
 
     def assign(vehicle)

@@ -26,6 +26,7 @@ module Command
       register(Create.new)
       register(Park.new)
       register(Leave.new)
+      register(Status.new)
     end
   end
 end
