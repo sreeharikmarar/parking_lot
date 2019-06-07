@@ -25,6 +25,11 @@ module ParkingLot
       ticket.slot.assign(vehicle)
     end
 
+    def leave(number)
+      ticket = get_ticket(number)
+      ticket.slot.clear!
+    end
+
     private
 
     def next_available_slot

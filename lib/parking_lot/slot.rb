@@ -20,5 +20,11 @@ module ParkingLot
       @vehicle = vehicle
       @number
     end
+
+    def clear!
+      @occupied = false
+      @vehicle = nil
+      @number
+    end
   end
 end

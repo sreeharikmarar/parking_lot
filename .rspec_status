@@ -1,9 +1,11 @@
 example_id                        | status | run_time        |
 --------------------------------- | ------ | --------------- |
-./spec/parking_lot_spec.rb[1:1:1] | passed | 0.00054 seconds |
-./spec/parking_lot_spec.rb[1:2:1] | passed | 0.0001 seconds  |
-./spec/parking_lot_spec.rb[1:2:2] | passed | 0.001 seconds   |
-./spec/parking_lot_spec.rb[1:3:1] | passed | 0.00048 seconds |
-./spec/parking_lot_spec.rb[1:3:2] | passed | 0.00017 seconds |
+./spec/parking_lot_spec.rb[1:1:1] | passed | 0.00056 seconds |
+./spec/parking_lot_spec.rb[1:2:1] | passed | 0.00013 seconds |
+./spec/parking_lot_spec.rb[1:2:2] | passed | 0.00108 seconds |
+./spec/parking_lot_spec.rb[1:3:1] | passed | 0.00045 seconds |
+./spec/parking_lot_spec.rb[1:3:2] | passed | 0.00015 seconds |
+./spec/parking_lot_spec.rb[1:4:1] | passed | 0.00013 seconds |
+./spec/parking_lot_spec.rb[1:4:2] | passed | 0.00015 seconds |
 ./spec/slot_spec.rb[1:1:1]        | passed | 0.00006 seconds |
 ./spec/vehicle_spec.rb[1:1:1]     | passed | 0.00006 seconds |

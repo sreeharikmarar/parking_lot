@@ -33,4 +33,21 @@ RSpec.describe ParkingLot::ParkingLotMain do
       expect { parking_lot.park(Vehicle::Car.new("KA-02-HH-1234","Red")) }.to raise_exception(Error::ParkingLotFull, "Sorry, parking lot is full")
     end
   end
+
+
+  context "#leave" do
+    before :each do
+      parking_lot.create_slots(2)
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234", "Red"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-3456", "White"))
+    end
+
+    it "should leave a vehicle provided by the slot number" do
+      expect(parking_lot.leave(2)).to eq(2)
+    end
+
+    it "should check if slot number is valid" do
+      expect { parking_lot.leave(5) }.to raise_exception(Error::InvalidSlotNumber, "Slot number is invalid")
+    end
+  end
 end
