@@ -1,8 +1,9 @@
 require_relative 'parking_lot'
 
-parkingLot = ParkingLot::ParkingLotMain.new
+parking_lot = ParkingLot::ParkingLotMain.new
 manager = Command::Manager.new
-while true
-  args = gets.chomp
-  manager.process(parkingLot, args)
+reader = Input::Reader.new(ARGV[0])
+
+while(reader.read)
+  manager.process(parking_lot, reader.instruction)
 end

@@ -4,4 +4,5 @@ module Error
   class ParkingLotFull < ParkingLotError; end
   class InvalidSlotNumber < ParkingLotError; end
   class InvalidCommand < ParkingLotError; end
+  class FileNotFound < ParkingLotError; end
 end

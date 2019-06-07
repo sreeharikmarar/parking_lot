@@ -14,6 +14,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 # - if python
 #   python3 $DIR/../main.py $1
 # - if ruby
-  ruby $DIR/../lib/main.rb
+  ruby $DIR/../lib/main.rb $1
 # 
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
