@@ -4,14 +4,14 @@ RSpec.describe 'End To End Suite' do
   describe "full scenarios" do
     let(:commands) do
       [
-          "create_parking_lot 6\n"
-          # "park KA-01-HH-1234 White\n",
-          # "park KA-01-HH-9999 White\n",
-          # "park KA-01-BB-0001 Black\n",
-          # "park KA-01-HH-7777 Red\n",
-          # "park KA-01-HH-2701 Blue\n",
-          # "park KA-01-HH-3141 Black\n",
-          # "leave 4\n",
+          "create_parking_lot 6\n",
+          "park KA-01-HH-1234 White\n",
+          "park KA-01-HH-9999 White\n",
+          "park KA-01-BB-0001 Black\n",
+          "park KA-01-HH-7777 Red\n",
+          "park KA-01-HH-2701 Blue\n",
+          "park KA-01-HH-3141 Black\n",
+          "leave 4\n"
           # "status\n",
           # "park KA-01-P-333 White\n",
           # "park DL-12-AA-9999 White\n",
@@ -24,14 +24,14 @@ RSpec.describe 'End To End Suite' do
 
     let(:expected) do
       [
-          "Created a parking lot with 6 slots\n"
-          # "Allocated slot number: 1\n",
-          # "Allocated slot number: 2\n",
-          # "Allocated slot number: 3\n",
-          # "Allocated slot number: 4\n",
-          # "Allocated slot number: 5\n",
-          # "Allocated slot number: 6\n",
-          # "Slot number 4 is free\n",
+          "Created a parking lot with 6 slots\n",
+          "Allocated slot number: 1\n",
+          "Allocated slot number: 2\n",
+          "Allocated slot number: 3\n",
+          "Allocated slot number: 4\n",
+          "Allocated slot number: 5\n",
+          "Allocated slot number: 6\n",
+          "Slot number 4 is free\n"
           # "Slot No.    Registration No    Colour\n1           KA-01-HH-1234      White\n2           KA-01-HH-9999      White\n3           KA-01-BB-0001      Black\n5           KA-01-HH-2701      Blue\n6           KA-01-HH-3141      Black\n",
           # "Allocated slot number: 4\n",
           # "Sorry, parking lot is full\n",

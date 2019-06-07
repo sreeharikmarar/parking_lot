@@ -19,4 +19,25 @@ RSpec.describe Command::Manager do
       expect { manager.process(parking_lot, "some_command 1") }.to raise_error(Error::InvalidCommand)
     end
   end
+
+  before :each do
+    parking_lot.create_slots(3)
+  end
+
+  context "#process park command" do
+    it "should process park command" do
+      expect do
+        manager.process(parking_lot, "park KA-01-HH-1234 White")
+      end.to output("Allocated slot number: 1\n").to_stdout
+    end
+  end
+
+  context "#process leave command" do
+    it "should process leave command" do
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
+      expect do
+        manager.process(parking_lot, "leave 1")
+      end.to output("Slot number 1 is free\n").to_stdout
+    end
+  end
 end

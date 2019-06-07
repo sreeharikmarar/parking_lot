@@ -23,6 +23,8 @@ module Command
 
     def register_commands
       register(Create.new)
+      register(Park.new)
+      register(Leave.new)
     end
   end
 end
