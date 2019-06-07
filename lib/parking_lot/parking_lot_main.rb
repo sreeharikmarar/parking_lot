@@ -1,5 +1,5 @@
 module ParkingLot
-  class Base
+  class ParkingLotMain
     NUMBER_OF_FLOORS=1
     attr_reader :floors, :slots, :tickets
 
@@ -41,6 +41,13 @@ module ParkingLot
 
       ticket = Ticket.new(slot)
       @tickets[slot.number] = ticket
+      ticket
+    end
+
+    def get_ticket(number)
+      ticket = @tickets[number]
+      raise Error::InvalidSlotNumber.new("Slot number is invalid") unless ticket
+
       ticket
     end
   end

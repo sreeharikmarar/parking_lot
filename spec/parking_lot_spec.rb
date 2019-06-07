@@ -1,6 +1,5 @@
-RSpec.describe ParkingLot::Base do
-  let(:parking_lot) { ParkingLot::Base.new }
-
+RSpec.describe ParkingLot::ParkingLotMain do
+  let(:parking_lot) { ParkingLot::ParkingLotMain.new }
   context "#initialize" do
     it "should initialize parking lot" do
       expect(parking_lot.floors).to be(1)
