@@ -36,5 +36,47 @@ EOTXT
 )
   end
   
-#   pending "add more specs as needed"
+  it "can get reg numbers of cars with given color" do
+    run_command(pty, "park KA-01-HH-1234 White\n")
+    run_command(pty, "park KA-01-HH-3141 Black\n")
+    run_command(pty, "park KA-01-HH-9999 White\n")
+    run_command(pty, "registration_numbers_for_cars_with_colour White\n")
+    expect(fetch_stdout(pty)).to end_with("KA-01-HH-1234, KA-01-HH-9999\n")
+  end
+
+  it "can get slot numbers of cars with given color" do
+    run_command(pty, "park KA-01-HH-1234 White\n")
+    run_command(pty, "park KA-01-HH-3141 Black\n")
+    run_command(pty, "park KA-01-HH-9999 White\n")
+    run_command(pty, "slot_numbers_for_cars_with_colour White\n")
+    expect(fetch_stdout(pty)).to end_with("1, 3\n")
+  end
+
+  it "can get slot numbers of cars with given register number" do
+    run_command(pty, "park KA-01-HH-1234 White\n")
+    run_command(pty, "park KA-01-HH-3141 Black\n")
+    run_command(pty, "park KA-01-HH-9999 White\n")
+    run_command(pty, "slot_number_for_registration_number KA-01-HH-3141\n")
+    expect(fetch_stdout(pty)).to end_with("2\n")
+  end
+  
+  context "validations" do
+    it "cannot park if parking lot is full" do
+      run_command(pty, "park KA-01-HH-1234 White\n")
+      run_command(pty, "park KA-01-HH-3141 Black\n")
+      run_command(pty, "park KA-01-HH-9999 White\n")
+      run_command(pty, "park KA-01-HH-9999 White\n")
+      expect(fetch_stdout(pty)).to end_with("Sorry, parking lot is full\n")
+    end
+
+    it "cannot leave if ticket is invalid" do
+      run_command(pty, "leave 4\n")
+      expect(fetch_stdout(pty)).to end_with("Slot number is invalid\n")
+    end
+
+    it "cannot execute an invalid command" do
+      run_command(pty, "some_command 4\n")
+      expect(fetch_stdout(pty)).to end_with("Command Not Found!\n")
+    end
+  end
 end
