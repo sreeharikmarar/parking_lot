@@ -6,13 +6,13 @@ module Command
 
     def execute(parking_lot, *args)
       color = parse(args)
-      slots = parking_lot.slots.select { |slot| slot.vehicle.color == color if slot.occupied? }
-      slots.map { |slot| slot.vehicle.reg_number}.join(", ")
+      query = Query::RegNumberWithColor.new(color)
+      query.execute(parking_lot)
     end
 
     def parse(args)
-      raise Error::InvalidArgument.new("Color should not be nill") unless args
-      raise Error::InvalidArgument.new("Multiple number of arguments, expected 1") unless args.length == 1
+      raise Error::InvalidArgument.new("Color should not be null") if args.empty?
+      raise Error::InvalidArgument.new("Multiple number of arguments, expected 1") if args.length > 1
 
       args.first
     end

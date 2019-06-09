@@ -18,4 +18,14 @@ RSpec.describe Command::RegNumberWithColor do
       expect(command.execute(parking_lot, "White")).to eq("KA-11-HL-412, KA-01-AB-113")
     end
   end
+
+  context "#parse" do
+    it "should raise an error if arguments are not passed" do
+      expect{ command.execute(parking_lot)}.to raise_error(Error::InvalidArgument, "Color should not be null")
+    end
+
+    it "should raise an error if arguments passed were wrong" do
+      expect{ command.execute(parking_lot, "White", "Blue")}.to raise_error(Error::InvalidArgument, "Multiple number of arguments, expected 1")
+    end
+  end
 end
