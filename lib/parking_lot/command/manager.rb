@@ -28,6 +28,7 @@ module Command
       register(Leave.new)
       register(Status.new)
       register(RegNumberWithColor.new)
+      register(SlotWithColor.new)
     end
   end
 end
