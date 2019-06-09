@@ -51,4 +51,15 @@ RSpec.describe Command::Manager do
       end.to output("Slot No.    Registration No    Colour\n1           KA-01-HH-1234      white\n2           KA-01-HH-3457      Red\n3           KA-01-HH-5678      Red\n").to_stdout
     end
   end
+
+  context "#process registration_numbers_for_cars_with_colour command" do
+    it "should process status command" do
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-3457","Red"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-5678","Red"))
+      expect do
+        manager.process(parking_lot, "registration_numbers_for_cars_with_colour Red")
+      end.to output("KA-01-HH-3457, KA-01-HH-5678\n").to_stdout
+    end
+  end
 end

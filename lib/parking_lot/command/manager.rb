@@ -27,6 +27,7 @@ module Command
       register(Park.new)
       register(Leave.new)
       register(Status.new)
+      register(RegNumberWithColor.new)
     end
   end
 end
