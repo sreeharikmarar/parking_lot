@@ -63,7 +63,6 @@ RSpec.describe Command::Manager do
     end
   end
 
-
   context "#process slot_numbers_for_cars_with_colour command" do
     it "should process query command" do
       parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
@@ -72,6 +71,27 @@ RSpec.describe Command::Manager do
       expect do
         manager.process(parking_lot, "slot_numbers_for_cars_with_colour Red")
       end.to output("2, 3\n").to_stdout
+    end
+  end
+
+  context "#process slot_number_for_registration_number command" do
+    it "should process status command" do
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-3457","Red"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-5678","Red"))
+
+      expect do
+        manager.process(parking_lot, "slot_number_for_registration_number KA-01-HH-5678")
+      end.to output("3\n").to_stdout
+    end
+
+    it "return not found if no result found" do
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-1234","white"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-3457","Red"))
+      parking_lot.park(Vehicle::Car.new("KA-01-HH-5678","Red"))
+      expect do
+        manager.process(parking_lot, "slot_number_for_registration_number MH-04-AY-1111")
+      end.to output("Not found\n").to_stdout
     end
   end
 end
